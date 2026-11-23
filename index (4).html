@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حلّال – مساعدك الدراسي بالذكاء الاصطناعي</title>
+<style>
+:root{--bg:#fff7f8;--card:#fff;--text:#1d1b20;--muted:#6b6670;--brand:#ff2d55;--brand2:#ff6b8a;--line:#f1d9de;--chip:#ffe9ed;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150f11;--card:#231a1d;--text:#f6eef0;--muted:#b3a6ab;--line:#3a2a2f;--chip:#3a2128;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#150f11;--card:#231a1d;--text:#f6eef0;--muted:#b3a6ab;--line:#3a2a2f;--chip:#3a2128;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Tahoma,"Noto Sans Arabic",system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+.w{max-width:960px;margin:0 auto;padding:0 18px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-size:22px}
+.nl{display:flex;gap:16px;align-items:center;font-size:14px}
+.nl a{color:var(--muted);text-decoration:none}
+.btn{border:0;border-radius:14px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.pri{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 8px 24px #ff2d5544}
+.sec{background:var(--chip);color:var(--text)}
+.hero{position:relative;text-align:center;padding:36px 0 28px}
+.blob{position:fixed;border-radius:50%;filter:blur(60px);opacity:.45;z-index:-1;animation:fl 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--brand);top:-40px;right:-60px}
+.b2{width:220px;height:220px;background:#ffb36b;top:120px;left:-60px;animation-delay:-4s}
+@keyframes fl{50%{transform:translate(30px,40px) scale(1.15)}}
+h1{font-size:clamp(30px,6vw,52px);line-height:1.25;margin:10px 0}
+h1 span{background:linear-gradient(135deg,var(--brand),#ff9a5a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:520px;margin:0 auto 20px;font-size:17px}
+.phone{margin:26px auto 0;width:min(300px,86%);background:var(--card);border:1px solid var(--line);border-radius:28px;padding:16px;box-shadow:0 24px 60px #ff2d5533}
+.scan{position:relative;height:90px;border-radius:14px;background:var(--chip);display:grid;place-items:center;font-size:26px;font-weight:700;overflow:hidden;direction:ltr}
+.scan::after{content:"";position:absolute;left:0;right:0;height:3px;background:var(--brand);box-shadow:0 0 14px var(--brand);animation:sc 2.4s linear infinite}
+@keyframes sc{0%{top:0}100%{top:100%}}
+.steps{text-align:right;font-size:14px;margin-top:12px;min-height:84px}
+.steps div{opacity:0;transform:translateY(8px);animation:up .5s forwards}
+.steps div:nth-child(2){animation-delay:.9s}.steps div:nth-child(3){animation-delay:1.8s}
+@keyframes up{to{opacity:1;transform:none}}
+.stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.stats b{display:block;font-size:26px;color:var(--brand)}.stats small{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}
+section{padding:26px 0}
+h2{font-size:24px;margin:0 0 14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.chip{border:0;background:var(--chip);color:var(--text);padding:8px 14px;border-radius:999px;font:inherit;font-size:14px;white-space:nowrap;cursor:pointer}
+.chip.on{background:var(--brand);color:#fff}
+textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--text);font:inherit;padding:12px;resize:vertical}
+textarea:focus{outline:2px solid var(--brand)}
+#pv{display:none;position:relative;margin:10px 0}#pv img{max-width:100%;max-height:230px;border-radius:12px;display:block}
+#rm{position:absolute;top:6px;left:6px;border:0;border-radius:50%;width:28px;height:28px;background:#000a;color:#fff;cursor:pointer}
+.row{display:flex;gap:10px;margin-top:12px}.row .btn{flex:1}.row .pri{flex:2}
+.pri:disabled{opacity:.5;cursor:wait}
+#out{display:none;margin-top:14px}
+#ans{white-space:pre-wrap;word-wrap:break-word}
+.bar{height:3px;background:linear-gradient(90deg,transparent,var(--brand),transparent);background-size:200%;animation:bar 1s linear infinite;border-radius:3px;margin-bottom:8px;display:none}
+@keyframes bar{to{background-position:-200%}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.ft{font-size:30px}.grid h3{margin:6px 0 2px;font-size:17px}.grid p{margin:0;color:var(--muted);font-size:14px}
+.hi{padding:10px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14px}
+.hi:last-child{border:0}.hi small{color:var(--muted)}
+details{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:var(--card)}
+summary{font-weight:700;cursor:pointer}details p{margin:8px 0 0;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 40px}
+.w{position:relative;z-index:1}
+#fx{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#fx i{position:absolute;bottom:-60px;font-style:normal;font-weight:700;color:var(--brand);opacity:0;animation:rise linear infinite;direction:ltr}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.2}90%{opacity:.2}100%{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.scan b{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){#fx{display:none}}
+</style>
+</head>
+<body>
+<div id="fx"></div>
+<div class="w">
+<nav>
+<div class="brand"><div class="logo">✕</div>حلّال</div>
+<div class="nl"><a href="#solve">حلّ سؤال</a><a href="#feat">المزايا</a><a href="#faq">أسئلة</a><button class="btn sec" id="login" style="padding:8px 14px">تسجيل الدخول</button></div>
+</nav>
+
+<div class="hero">
+<div class="blob b1"></div><div class="blob b2"></div>
+<h1>صوّر السؤال.<br><span>احصل على الحل فورًا.</span></h1>
+<p class="sub">معلّم ذكي متاح ٢٤ ساعة يشرح لك الحل خطوة بخطوة في كل المواد، من الرياضيات إلى اللغات.</p>
+<a href="#solve"><button class="btn pri">ابدأ الآن مجانًا</button></a>
+<div class="phone"><div class="scan">2x + 6 = 14</div>
+<div class="steps"><div>١) نطرح ٦ من الطرفين</div><div>٢) 2x = 8</div><div>٣) x = 4 ✅</div></div></div>
+<div class="stats"><div><b data-n="12">0</b><small>مادة دراسية</small></div><div><b data-n="24">0</b><small>ساعة يوميًا</small></div><div><b data-n="3">0</b><small>ثوانٍ للحل</small></div></div>
+</div>
+
+<section id="solve" class="rv">
+<h2>حلّ سؤالك</h2>
+<div class="card">
+<div class="chips" id="chips"></div>
+<textarea id="q" placeholder="اكتب أي سؤال، أو صوّره بالكاميرا…"></textarea>
+<div id="pv"><img id="img" alt=""><button id="rm" aria-label="إزالة">×</button></div>
+<div class="row"><button class="btn sec" id="snap">📷 صوّر السؤال</button><button class="btn pri" id="go">احسب الحل</button></div>
+<input type="file" id="file" accept="image/*" capture="environment" hidden>
+<div id="out"><div class="bar" id="bar"></div><div id="ans"></div>
+<div class="row"><button class="btn sec" id="cp">نسخ الحل</button><button class="btn sec" id="more">اشرح أكثر</button></div></div>
+</div>
+</section>
+
+<section id="hist" class="rv" style="display:none"><h2>سجلّ أسئلتك</h2><div class="card" id="hl"></div></section>
+
+<section id="feat" class="rv">
+<h2>لماذا حلّال؟</h2>
+<div class="grid">
+<div class="card"><div class="ft">📸</div><h3>تصوير فوري</h3><p>صوّر المسألة وسيقرأها الذكاء الاصطناعي.</p></div>
+<div class="card"><div class="ft">🪜</div><h3>حل خطوة بخطوة</h3><p>شرح مرتّب يساعدك على الفهم لا النسخ فقط.</p></div>
+<div class="card"><div class="ft">📚</div><h3>كل المواد</h3><p>رياضيات وعلوم ولغات وتاريخ وبرمجة وغيرها.</p></div>
+<div class="card"><div class="ft">🗂️</div><h3>سجلّ محفوظ</h3><p>أسئلتك السابقة محفوظة بعد تسجيل الدخول.</p></div>
+</div></section>
+
+<section id="faq" class="rv"><h2>أسئلة شائعة</h2>
+<details><summary>هل الإجابات دقيقة دائمًا؟</summary><p>غالبًا، لكن قد يخطئ أحيانًا. راجع الخطوات وتأكّد منها.</p></details>
+<details><summary>هل أحتاج حسابًا؟</summary><p>لا، لكن تسجيل الدخول يحفظ سجلّ أسئلتك.</p></details>
+<details><summary>ما المواد المدعومة؟</summary><p>أي مادة تقريبًا، اختر الأقرب أو «أي سؤال».</p></details>
+</section>
+<footer>حلّال © مشروع تجريبي · للمراجعة والفهم وليس لنسخ الواجبات</footer>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var subs=["رياضيات","فيزياء","كيمياء","أحياء","عربي","إنجليزي","تاريخ","برمجة","أي سؤال"],subj=subs[0],blob=null,last="",uid=null,db=null;
+subs.forEach(function(s,i){var b=document.createElement("button");b.className="chip"+(i?"":" on");b.textContent=s;b.onclick=function(){subj=s;[].forEach.call($("chips").children,function(c){c.classList.toggle("on",c===b)})};$("chips").appendChild(b)});
+document.querySelectorAll("[data-n]").forEach(function(el){var n=+el.dataset.n,i=0,t=setInterval(function(){el.textContent=++i;if(i>=n)clearInterval(t)},60)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.1});
+document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
+var sy=["×","+","π","√","∑","x²","÷","=","∞","H₂O","E=mc²","∫","A+","{ }","Δ","%"];
+for(var k=0;k<22;k++){var s=document.createElement("i");s.textContent=sy[k%sy.length];s.style.left=(Math.random()*94)+"%";s.style.fontSize=(16+Math.random()*30)+"px";s.style.animationDuration=(14+Math.random()*16)+"s";s.style.animationDelay=(-Math.random()*28)+"s";$("fx").appendChild(s)}
+$("snap").onclick=function(){$("file").click()};
+$("file").onchange=function(e){var f=e.target.files[0];if(!f)return;blob=f;$("img").src=URL.createObjectURL(f);$("pv").style.display="block"};
+$("rm").onclick=function(){blob=null;$("file").value="";$("pv").style.display="none"};
+$("cp").onclick=function(){try{navigator.clipboard.writeText($("ans").textContent);$("cp").textContent="تم النسخ ✓"}catch(e){}};
+async function solve(q,extra){
+var ans=$("ans"),btn=$("go");
+$("out").style.display="block";$("bar").style.display="block";ans.textContent="جارٍ التفكير…";btn.disabled=true;
+try{
+var sample=await claude.use("sample");
+if(!sample){ans.textContent="الحل الذكي غير متاح في هذا العرض.";return}
+var opts={onText:function(t){ans.textContent=t.text}};
+if(blob){var lim=await sample.limits();if(lim&&lim.images)opts.images=[blob];else if(!q){ans.textContent="رفع الصور غير متاح الآن، اكتب السؤال.";return}}
+var p="أنت معلّم صبور ومتمكّن"+(subj==="أي سؤال"?"":" في مادة "+subj)+". أجب بالعربية (وبلغة السؤال إن كانت مختلفة). "+(extra?"اشرح الحل السابق بتفصيل أكبر مع أمثلة مبسّطة.":"قدّم الحل خطوات مرقّمة قصيرة ثم سطر «الإجابة النهائية».")+" استخدم نصًا عاديًا بدون LaTeX."+(blob?" السؤال في الصورة المرفقة.":"")+"\n\nالسؤال:\n"+(q||"(انظر الصورة)")+(extra?"\n\nالحل السابق:\n"+last:"");
+var r=await sample(p,opts);last=r.text;ans.textContent=r.text;$("cp").textContent="نسخ الحل";
+if(!extra)save(q||"سؤال بالصورة",r.text);
+}catch(e){ans.textContent=e&&e.code==="rate_limited"?"الطلبات كثيرة، حاول بعد قليل.":e&&e.code==="not_granted"?"لم تتم الموافقة على استخدام Claude.":"تعذّر الحل، حاول مرة أخرى."}
+finally{btn.disabled=false;$("bar").style.display="none"}}
+$("go").onclick=function(){var q=$("q").value.trim();if(!q&&!blob){$("q").focus();return}solve(q,false)};
+$("more").onclick=function(){if(last)solve($("q").value.trim(),true)};
+function save(q,a){if(!db||!uid)return;try{db.collection("data/users/"+uid).doc("h"+Date.now()).set({t:Date.now(),s:subj,q:q.slice(0,300),a:a.slice(0,6000)})}catch(e){}}
+function showHist(){var hl=$("hl");db.collection("data/users/"+uid).orderBy("t","desc").limit(15).onSnapshot(function(sn){hl.textContent="";if(sn.empty){hl.textContent="لا توجد أسئلة محفوظة بعد.";return}
+sn.docs.forEach(function(d){var v=d.data(),x=document.createElement("div");x.className="hi";var a=document.createElement("b");a.textContent=v.q;var s=document.createElement("small");s.textContent=" · "+v.s;x.appendChild(a);x.appendChild(s);x.onclick=function(){last=v.a;$("out").style.display="block";$("ans").textContent=v.a;$("solve").scrollIntoView()};hl.appendChild(x)})},function(){})}
+(async function(){
+try{var u=await claude.use("user");db=await claude.use("db");
+if(u&&db){uid=await u.id();var me=await u.me();if(uid){var nm=(me&&me.name)||"حسابي";$("login").textContent="👤 "+nm;$("hist").style.display="block";showHist()}}}catch(e){}})();
+$("login").onclick=function(){if(!uid)alert("تسجيل الدخول يتم بحساب claude.ai. افتح الصفحة وأنت مسجّل الدخول ليُحفظ سجلّك.")};
+})();
+</script>
+</body>
+</html>
